@@ -1,7 +1,21 @@
 @file:Suppress("NAME_SHADOWING")
 
+
 object WallService {
     private var posts = emptyArray<Post>()
+    public var comments = emptyArray<Post.Commentes>()
+    val error = PostNotFoundException()
+
+    fun createComment(comment: Post.Commentes): Post.Commentes {
+        val commentId = comment.id
+            if (comments.isEmpty()) {
+                comments += comment
+            } else for ((index, comment) in comments.withIndex())
+                if (comment.id != commentId) {
+                comments += comment
+            } else { error("ошибка")}
+        return comments.last()
+    }
 
     fun add(post: Post): Post {
         val post = post.copy(id = generationId())
@@ -51,7 +65,7 @@ object WallService {
     }
 
     fun clearArr() {
-
+        comments = emptyArray()
         posts = emptyArray()
         memoryIdPost = 1
     }

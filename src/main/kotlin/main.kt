@@ -10,15 +10,15 @@ fun main() {
         1,
         2,
         false,
-        Post.Comments(2),
+        Post.Commentes(77, 7),
         "Why not?",
         Post.Likes(2),
         Post.Reposts(2),
         Post.Views(4),
         PostType.Post,
-        Post.PostSource("photo","vk" ,"13-07-2022", "url.ru"),
+        Post.PostSource("photo", "vk", "13-07-2022", "url.ru"),
         Post.ArrayAttachments("audio"),
-        Post.Geo("String", "vk",Post.Geo.Place("String")),
+        Post.Geo("String", "vk", Post.Geo.Place("String")),
         5,
         false,
         false,
@@ -27,7 +27,7 @@ fun main() {
         false,
         false,
         false,
-        Post.Donut(false,1,Post.Donut.Placeholder("Tver"),false,"nightmare"),
+        Post.Donut(false, 1, Post.Donut.Placeholder("Tver"), false, "nightmare"),
         1
     )
 
@@ -41,15 +41,15 @@ fun main() {
         1,
         2,
         false,
-        Post.Comments(2),
+        Post.Commentes(88, 8),
         "Why not?",
         Post.Likes(2),
         Post.Reposts(2),
         Post.Views(4),
         PostType.Post,
-        Post.PostSource("photo","vk" ,"13-07-2022", "url.ru"),
+        Post.PostSource("photo", "vk", "13-07-2022", "url.ru"),
         Post.ArrayAttachments("audio"),
-        Post.Geo("String", "vk",Post.Geo.Place("String")),
+        Post.Geo("String", "vk", Post.Geo.Place("String")),
         5,
         false,
         false,
@@ -58,7 +58,7 @@ fun main() {
         false,
         false,
         false,
-        Post.Donut(false,1,Post.Donut.Placeholder("Tver"),false,"nightmare"),
+        Post.Donut(false, 1, Post.Donut.Placeholder("Tver"), false, "nightmare"),
         1
     )
     val origin2 = Post(
@@ -71,15 +71,15 @@ fun main() {
         1,
         2,
         false,
-        Post.Comments(2),
+        Post.Commentes(99, 9),
         "Why not?",
         Post.Likes(2),
         Post.Reposts(2),
         Post.Views(4),
         PostType.Post,
-        Post.PostSource("photo","vk" ,"13-07-2022", "url.ru"),
+        Post.PostSource("photo", "vk", "13-07-2022", "url.ru"),
         Post.ArrayAttachments("audio"),
-        Post.Geo("String", "vk",Post.Geo.Place("String")),
+        Post.Geo("String", "vk", Post.Geo.Place("String")),
         5,
         false,
         false,
@@ -88,12 +88,12 @@ fun main() {
         false,
         false,
         false,
-        Post.Donut(false,1,Post.Donut.Placeholder("Tver"),false,"nightmare"),
+        Post.Donut(false, 1, Post.Donut.Placeholder("Tver"), false, "nightmare"),
         1
     )
-    WallService.add(origin1)
-    println(WallService.add(origin1))
-    WallService.add(origin2)
+
+
+    println(WallService.add(origin))
     println(WallService.add(origin2))
-    println(WallService.update(origin))
+    println(WallService.createComment(origin.comments!!))
 }

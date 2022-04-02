@@ -11,8 +11,8 @@ data class Post(
     val text: String?,
     val replyOwnerId: Int?,
     val replyPostId: Int?,
-    val friendsOnly: Boolean = false,
-    val comments: Comments?,
+    val friendsOnly: Boolean? = false,
+    val comments: Commentes?,
     val copyright: String?,
     val likes: Likes?,
     val reposts: Reposts?,
@@ -22,34 +22,35 @@ data class Post(
     var attachments: ArrayAttachments,
     val geo: Geo?,
     val signerId: Int?,
-    val copeHistory: Boolean = false,
-    val canPin: Boolean = false,
-    val canDelete: Boolean = false,
-    val canEdit: Boolean = false,
-    val isPinned: Boolean = false,
-    val markedAsAds: Boolean = false,
-    val isFavorite: Boolean = false,
+    val copeHistory: Boolean? = false,
+    val canPin: Boolean? = false,
+    val canDelete: Boolean? = false,
+    val canEdit: Boolean? = false,
+    val isPinned: Boolean? = false,
+    val markedAsAds: Boolean? = false,
+    val isFavorite: Boolean? = false,
     val donut: Donut?,
     val postponedId: Int?,
 ) {
-    data class Comments(
+    data class Commentes(
+        val id: Int?,
         val count: Int?,
-        val canPost: Boolean = true,
-        val groupsCanPost: Boolean = true,
-        val canClose: Boolean = true,
-        val canOpen: Boolean = true,
+        val canPost: Boolean? = true,
+        val groupsCanPost: Boolean? = true,
+        val canClose: Boolean? = true,
+        val canOpen: Boolean? = true,
     )
 
     data class Likes(
         val count: Int?,
-        val userLikes: Boolean = false,
-        val canLike: Boolean = true,
-        val canPublish: Boolean = true,
+        val userLikes: Boolean? = false,
+        val canLike: Boolean? = true,
+        val canPublish: Boolean? = true,
     )
 
     data class Reposts(
         val count: Int?,
-        val userReposted: Boolean = false,
+        val userReposted: Boolean? = false,
     )
 
     data class Views(
@@ -74,7 +75,7 @@ data class Post(
     }
 
     data class Donut(
-        val isDonut: Boolean = false,
+        val isDonut: Boolean? = false,
         val paidDuration: Int?,
         val placeholder: Placeholder?,
         val canPublishFreeCopy: Boolean = false,
