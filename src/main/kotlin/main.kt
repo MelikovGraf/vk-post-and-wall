@@ -95,5 +95,5 @@ fun main() {
 
     println(WallService.add(origin))
     println(WallService.add(origin2))
-    println(WallService.createComment(origin.comments!!))
+    println(WallService.createComment(origin1))
 }

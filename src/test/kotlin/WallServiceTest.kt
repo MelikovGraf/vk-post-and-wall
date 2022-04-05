@@ -247,18 +247,17 @@ class WallServiceTest {
             1
         )
         WallService.add(origin)
-        val result = WallService.createComment(origin.comments!!)
+        val result = WallService.createComment(origin)
         assertEquals(Post.Commentes(id = 11,
             count = 2,
             canPost = true,
             groupsCanPost = true,
             canClose = true,
             canOpen = true), result)
-
     }
 
-    @Test
-    fun createCommentError() {
+    @Test(expected = PostNotFoundException::class)
+    fun shouldThrow() {
         WallService.clearArr()
         val origin = Post(
             id = 1,
@@ -290,8 +289,6 @@ class WallServiceTest {
             Post.Donut(false, 1, Post.Donut.Placeholder("Tver"), false, "nightmare"),
             1
         )
-        WallService.add(origin)
-        val createComment = WallService.createComment(origin.comments!!)
-        assertTrue("ошибка", true)
+        WallService.createComment(origin)
     }
 }

@@ -3,59 +3,7 @@
 
 object WallService {
     private var posts = emptyArray<Post>()
-    public var comments = emptyArray<Post.Commentes>()
-    val error = PostNotFoundException()
-
-    fun createComment(comment: Post.Commentes): Post.Commentes {
-        val commentId = comment.id
-            if (comments.isEmpty()) {
-                comments += comment
-            } else for ((index, comment) in comments.withIndex())
-                if (comment.id != commentId) {
-                comments += comment
-            } else { error("ошибка")}
-        return comments.last()
-    }
-
-    fun add(post: Post): Post {
-        val post = post.copy(id = generationId())
-        posts += post
-        return posts.last()
-    }
-
-    fun update(post: Post): Boolean {
-        val postId = post.component1()
-        val post1 = post
-        for ((index, post) in posts.withIndex()) {
-            if (post.id == postId) {
-                posts[index] = post.copy(
-                    fromId = post1.fromId,
-                    createdBy = post1.createdBy,
-                    text = post1.text,
-                    replyOwnerId = post1.replyOwnerId,
-                    replyPostId = post1.replyPostId,
-                    friendsOnly = post1.friendsOnly,
-                    comments = post1.comments,
-                    copyright = post1.copyright,
-                    likes = post1.likes,
-                    reposts = post1.reposts,
-                    views = post1.views,
-                    postType = post1.postType,
-                    signerId = post1.signerId,
-                    canPin = post1.canPin,
-                    canDelete = post1.canDelete,
-                    canEdit = post1.canEdit,
-                    isPinned = post1.isPinned,
-                    markedAsAds = post1.markedAsAds,
-                    isFavorite = post1.isFavorite,
-                    postponedId = post1.postponedId
-                )
-                return true
-            }
-        }
-        return false
-
-    }
+    private var comments = emptyArray<Post.Commentes>()
 
     private var memoryIdPost: Int = 1
 
@@ -68,5 +16,40 @@ object WallService {
         comments = emptyArray()
         posts = emptyArray()
         memoryIdPost = 1
+    }
+
+    fun createComment(post: Post): Post.Commentes? {
+        val postId = post.id
+        val postComment = post.comments
+        for ((index, post) in posts.withIndex())
+            if (post.id == postId) {
+                posts[index] = post.copy(
+                    comments = postComment
+                )
+                return post.comments!!
+            }else throw PostNotFoundException()
+        return null
+    }
+
+    fun add(post: Post): Post {
+        val newPost = post.copy(id = generationId())
+        posts += newPost
+        return posts.last()
+    }
+
+    fun update(post: Post): Boolean {
+        val postId = post.id
+        val oldPost = post
+        for ((index, post) in posts.withIndex()) {
+            if (post.id == postId) {
+                posts[index] = post.copy(
+                    ownerId = oldPost.ownerId,
+                    date = oldPost.date,
+                )
+                return true
+            }
+        }
+        return false
+
     }
 }
