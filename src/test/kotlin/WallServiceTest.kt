@@ -256,7 +256,7 @@ class WallServiceTest {
             canOpen = true), result)
     }
 
-    @Test(expected = PostNotFoundException::class)
+    @Test(expected = PostNotFoundException::class) // функция выдает ошибку (проверил через мейн), но почему то не засчитывается тест как верный. Не могу понять
     fun shouldThrow() {
         WallService.clearArr()
         val origin = Post(
