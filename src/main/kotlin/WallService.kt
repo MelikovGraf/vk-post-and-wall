@@ -1,6 +1,3 @@
-@file:Suppress("NAME_SHADOWING")
-
-
 object WallService {
     private var posts = emptyArray<Post>()
     private var comments = emptyArray<Post.Commentes>()
