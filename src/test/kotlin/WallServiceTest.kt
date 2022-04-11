@@ -269,7 +269,7 @@ class WallServiceTest {
             1,
             2,
             false,
-            Post.Commentes(null, null),
+            Post.Commentes(1, 1),
             "Why not?",
             Post.Likes(2),
             Post.Reposts(2),
@@ -289,6 +289,37 @@ class WallServiceTest {
             Post.Donut(false, 1, Post.Donut.Placeholder("Tver"), false, "nightmare"),
             1
         )
-        WallService.createComment(origin)
+        val origin1 = Post(
+            id = 2,
+            1,
+            6,
+            7,
+            25032022,
+            "Hello Maxim",
+            1,
+            2,
+            false,
+            Post.Commentes(2, 2),
+            "Why not?",
+            Post.Likes(2),
+            Post.Reposts(2),
+            Post.Views(4),
+            PostType.Post,
+            Post.PostSource("photo", "vk", "13-07-2022", "url.ru"),
+            Post.ArrayAttachments("audio"),
+            Post.Geo("String", "vk", Post.Geo.Place("String")),
+            5,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            Post.Donut(false, 1, Post.Donut.Placeholder("Tver"), false, "nightmare"),
+            1
+        )
+        WallService.add(origin)
+        WallService.createComment(origin1)
     }
 }

@@ -1,6 +1,3 @@
-@file:Suppress("NAME_SHADOWING")
-
-
 object WallService {
     private var posts = emptyArray<Post>()
     private var comments = emptyArray<Post.Commentes>()
@@ -21,13 +18,11 @@ object WallService {
     fun createComment(post: Post): Post.Commentes? {
         val postId = post.id
         val postComment = post.comments
-        for ((index, post) in posts.withIndex())
+        for (post in posts) {
             if (post.id == postId) {
-                posts[index] = post.copy(
-                    comments = postComment
-                )
-                return post.comments!!
-            }else throw PostNotFoundException()
+                return postComment
+            } else throw PostNotFoundException("Error")
+        }
         return null
     }
 
